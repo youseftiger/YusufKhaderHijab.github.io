@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yusuf Khader Hijab - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(50%);
+        }
+        .menu {
+    position: fixed;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1rem;
+    border-radius: 0.625rem;
+    width: 3.125rem;
+    transition: width 0.3s ease;
+    text-align: center;
+}
+
+.menu:hover {
+    width: 12.5rem;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.625rem;
+    color: white;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.menu-text {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.menu:hover .menu-text {
+    opacity: 1;
+}
+
+.menu-item i {
+    font-size: 1.25rem;
+}
+
+/* Hover effect */
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+        .content-section {
+            display: none;
+            text-align: center;
+            margin-top: 5rem;
+        }
+        .active {
+            display: block;
+        }
+        .tech-icon {
+    position: fixed;
+    top: 1rem;
+    left: 1rem; /* Moved to the left */
+    z-index: 10;
+}
+
+.home-button {
+    background-color: #00ff00;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.home-button:hover {
+    background-color: #008000;
+}
+
+        .code-editor {
+            background: black;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            border-radius: 8px;
+            padding: 15px;
+            width: 90%;
+            height: 200px;
+            margin: auto;
+            display: block;
+            border: 2px solid #00ff00;
+            outline: none;
+            resize: none;
+        }
+        .run-button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #00ff00;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .run-button:hover {
+            background-color: #008000;
+        }
+        #runMessage {
+            color: #ffff00;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        /* Google Search Styling */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+        }
+        .search-container input {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            outline: none;
+            font-size: 1rem;
+            width: 250px;
+            margin-right: 10px;
+        }
+        .search-container button {
+            padding: 0.5rem 1rem;
+            background-color: #00ff00;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            color: black;
+            cursor: pointer;
+        }
+        .search-container button:hover {
+            background-color: #008000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Background -->
+    <video class="video-bg" autoplay loop muted playsinline>
+        <source src="assets/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Home Icon -->
+<div class="tech-icon right-1" onclick="showHome()">
+    <button class="home-button">
+        <i class="fas fa-home"></i> Home
+    </button>
+</div>
+
+    
+    <!-- Menu -->
+<div class="menu">
+    <a onclick="showSection('about')" class="menu-item">
+        <i class="fas fa-user"></i>
+        <span class="menu-text">About Me</span>
+    </a>
+    <a onclick="showSection('projects')" class="menu-item">
+        <i class="fas fa-code"></i>
+        <span class="menu-text">Projects</span>
+    </a>
+    <a onclick="showSection('contact')" class="menu-item">
+        <i class="fas fa-envelope"></i>
+        <span class="menu-text">Contact</span>
+    </a>
+    <a href="https://www.instagram.com/yusuf.hijab/" target="_blank" class="menu-item">
+        <i class="fab fa-instagram"></i>
+        <span class="menu-text">Instagram</span>
+    </a>
+</div>
+
+
+    <!-- Home Section -->
+    <div id="home" class="container mx-auto text-center">
+        <header class="content mt-20">
+            <h1 class="text-5xl font-bold">Yusuf Khader Hijab</h1>
+            <p class="text-lg mt-2">Software Engineer | Tech Enthusiast</p>
+        </header>
+
+        <!-- Google Search (only in Home Section) -->
+        <div class="search-container">
+            <input type="text" id="searchQuery" placeholder="Search Google..." />
+            <button onclick="performSearch()">Search</button>
+        </div>
+
+        <!-- Code Example Section -->
+        <div class="mt-10">
+            <h2 class="text-3xl font-bold">Try Coding!</h2>
+            <textarea id="codeInput" class="code-editor">// Example: Increase the score
+function increaseScore() {
+    score++;
+    document.getElementById("scoreDisplay").innerText = 'Score: ' + score;
+}
+
+let score = 0;</textarea>
+            
+            <button class="run-button" onclick="runCode()">Run Code</button>
+            <p id="runMessage"></p>
+            
+            <div>
+                <button class="run-button" onclick="increaseScore()">Increase Score</button>
+                <p id="scoreDisplay">Score: 0</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about" class="content-section container mx-auto">
+        <h2 class="text-4xl font-bold">About Me</h2>
+        <img src="assets/yusuf_photo.jpg" alt="Yusuf Khader Hijab" class="mx-auto mt-4 rounded-full shadow-lg w-48 h-48 object-cover">
+        <p class="mt-4">I'm a software engineer with experience in JavaScript, C++, and more. I love building efficient and innovative software solutions.</p>
+    </div>
+
+  <!-- Projects Section -->
+<div id="projects" class="content-section">
+    <h2 class="text-4xl text-center font-bold mb-8">Projects & Articles</h2>
+    
+    <!-- Projects -->
+    <h3 class="text-3xl font-semibold mb-4">Projects</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Project Card -->
+        <div class="p-6 bg-gray-800 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <h4 class="text-2xl font-bold mb-2">Web Development Portfolio</h4>
+            <p class="text-gray-400 mb-4">A responsive portfolio website built with HTML, CSS, and JavaScript to showcase my work.</p>
+            <a href="#" class="text-green-400 hover:underline">View Project</a>
+        </div>
+        <div class="p-6 bg-gray-800 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <h4 class="text-2xl font-bold mb-2">Task Management App</h4>
+            <p class="text-gray-400 mb-4">A React and Firebase-based app to manage daily tasks efficiently with real-time updates.</p>
+            <a href="#" class="text-green-400 hover:underline">View Project</a>
+        </div>
+        <div class="p-6 bg-gray-800 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <h4 class="text-2xl font-bold mb-2">Weather App</h4>
+            <p class="text-gray-400 mb-4">A JavaScript app fetching live weather data using APIs to provide real-time weather updates.</p>
+            <a href="#" class="text-green-400 hover:underline">View Project</a>
+        </div>
+        <div class="p-6 bg-gray-800 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <h4 class="text-2xl font-bold mb-2">Blog Platform</h4>
+            <p class="text-gray-400 mb-4">A Node.js and MongoDB-based platform for creating, editing, and sharing blogs with users.</p>
+            <a href="#" class="text-green-400 hover:underline">View Project</a>
+        </div>
+    </div>
+
+    <!-- Articles -->
+    <h3 class="text-3xl font-semibold mt-12 mb-4">Articles</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 bg-gray-800 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <h4 class="text-2xl font-bold mb-2">Web Development Trends 2025</h4>
+            <p class="text-gray-400 mb-4">Explore the latest trends in web development and how to stay ahead in 2025.</p>
+            <a href="#" class="text-green-400 hover:underline">Read Article</a>
+        </div>
+        <div class="p-6 bg-gray-800 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <h4 class="text-2xl font-bold mb-2">Asynchronous JavaScript Deep Dive</h4>
+            <p class="text-gray-400 mb-4">An in-depth look at async programming in JavaScript with practical examples.</p>
+            <a href="#" class="text-green-400 hover:underline">Read Article</a>
+        </div>
+        <div class="p-6 bg-gray-800 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <h4 class="text-2xl font-bold mb-2">Building Scalable Node.js Apps</h4>
+            <p class="text-gray-400 mb-4">Techniques to build high-performance, scalable Node.js applications for enterprise use.</p>
+            <a href="#" class="text-green-400 hover:underline">Read Article</a>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Contact Section -->
+    <div id="contact" class="content-section container mx-auto">
+        <h2 class="text-4xl font-bold">Contact</h2>
+        <p>Email: yusufhijab.2003@gmail.com</p>
+        <p>Phone: +393509213266</p>
+        <p>Location: Bari, Italy</p>
+        <a href="assets/Yusuf_Khader_Hijab_CV.jpg" class="run-button" download>Download My CV</a>
+    </div>
+
+    <script>
+        function performSearch() {
+            const query = document.getElementById("searchQuery").value.trim();
+            if (query) {
+                window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+            } else {
+                alert("Please enter a search query.");
+            }
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+            document.getElementById('home').style.display = 'none';
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function showHome() {
+            document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+            document.getElementById('home').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
